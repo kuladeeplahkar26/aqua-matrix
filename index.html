@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaMatrix – Smart Campus Water Analytics Through Mathematics</title>
+  <meta name="description" content="Smart Campus Water Consumption Analysis and Optimization Using Matrix Algebra and Calculus. First-Year B.Tech Mathematics Project.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App Container -->
+  <div class="app-layout">
+
+    <!-- Mobile Topbar Toggle -->
+    <header class="mobile-header">
+      <div class="brand">
+        <div class="logo-icon"><i class="fa-solid fa-water"></i></div>
+        <div class="logo-text">
+          <h2>AquaMatrix</h2>
+          <span>Smart Water Analytics</span>
+        </div>
+      </div>
+      <button id="sidebarToggleBtn" class="icon-btn" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon-large">
+          <i class="fa-solid fa-droplet"></i>
+        </div>
+        <div class="brand-info">
+          <h1 class="brand-title">AquaMatrix</h1>
+          <p class="brand-tagline">Smart Water Analytics Through Mathematics</p>
+        </div>
+      </div>
+
+      <div class="project-badge">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>B.Tech Math Project</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="#home" class="nav-link active" data-section="home">
+              <i class="fa-solid fa-house"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#dashboard" class="nav-link" data-section="dashboard">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#data-entry" class="nav-link" data-section="data-entry">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Data Entry</span>
+            </a>
+          </li>
+          <li>
+            <a href="#matrix-analysis" class="nav-link" data-section="matrix-analysis">
+              <i class="fa-solid fa-table-cells"></i>
+              <span>Matrix Analysis</span>
+            </a>
+          </li>
+          <li>
+            <a href="#calculus-analysis" class="nav-link" data-section="calculus-analysis">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Calculus Analysis</span>
+            </a>
+          </li>
+          <li>
+            <a href="#visualizations" class="nav-link" data-section="visualizations">
+              <i class="fa-solid fa-chart-pie"></i>
+              <span>Graphs & Visualization</span>
+            </a>
+          </li>
+          <li>
+            <a href="#recommendations" class="nav-link" data-section="recommendations">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>Results & Insights</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link" data-section="about">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>About AquaMatrix</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-status">
+          <span class="status-indicator"></span>
+          <span>Matrix Engine Active</span>
+        </div>
+        <button id="quickSampleBtn" class="btn btn-outline-sm">
+          <i class="fa-solid fa-rotate-left"></i> Reload Sample
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Global Top Alert Banner for Illustrative Sample Data -->
+      <div id="sampleDataBanner" class="alert-banner">
+        <div class="alert-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+        <div class="alert-content">
+          <strong>Illustrative Sample Data:</strong> These values are for demonstration purposes only and are not actual campus measurements.
+        </div>
+        <div class="alert-actions">
+          <button id="bannerClearBtn" class="btn-text-sm" title="Clear all sample data">Clear Data</button>
+          <button id="bannerDismissBtn" class="btn-icon-sm" title="Dismiss notice">&times;</button>
+        </div>
+      </div>
+
+      <!-- Header / Top Bar -->
+      <div class="top-header">
+        <div class="header-left">
+          <h2 id="currentSectionTitle" class="page-title">Campus Water Overview</h2>
+          <p id="currentSectionSubtitle" class="page-subtitle">Real-time mathematical telemetry & matrix consumption modeling</p>
+        </div>
+        <div class="header-right">
+          <div class="date-badge">
+            <i class="fa-regular fa-calendar"></i>
+            <span id="activeDateDisplay">Today</span>
+          </div>
+          <button id="quickAddBtn" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> New Entry
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- SECTION 0: HOME / HERO PRESENTATION       -->
+      <!-- ========================================== -->
+      <section id="home" class="content-section active">
+        <div class="hero-ambient-container">
+          <!-- Main Floating Hero Card (Matching Reference Design) -->
+          <div class="xylem-hero-card">
+            
+            <!-- Top Inner Navigation Bar -->
+            <nav class="xylem-nav">
+              <div class="xylem-brand">
+                <span class="brand-name">aquamatrix</span>
+              </div>
+              <div class="xylem-menu">
+                <a href="#dashboard" class="xylem-nav-link nav-link-inline" data-section="dashboard">Dashboard</a>
+                <a href="#matrix-analysis" class="xylem-nav-link nav-link-inline" data-section="matrix-analysis">Matrix Analysis</a>
+                <a href="#calculus-analysis" class="xylem-nav-link nav-link-inline" data-section="calculus-analysis">Calculus Analysis</a>
+                <a href="#visualizations" class="xylem-nav-link nav-link-inline" data-section="visualizations">Visualizations</a>
+                <a href="#about" class="xylem-nav-link nav-link-inline" data-section="about">About Us</a>
+                <a href="#dashboard" class="xylem-nav-cta nav-link-inline" data-section="dashboard">Explore Analytics &rarr;</a>
+              </div>
+            </nav>
+
+            <!-- Hero Two-Column Content -->
+            <div class="xylem-hero-content">
+              <!-- Left Column: Typography & CTAs -->
+              <div class="xylem-text-col">
+                <span class="xylem-eyebrow">ADVANCED INFRASTRUCTURE ANALYTICS</span>
+                <h1 class="xylem-headline">
+                  Become a Data-Driven<br>Water Manager
+                </h1>
+                <p class="xylem-subtext">
+                  We deliver innovative matrix algebra and calculus-driven telemetry solutions that focus campus utility resources on where they are needed the most.
+                </p>
+                <div class="xylem-btn-group">
+                  <a href="#dashboard" class="xylem-btn xylem-btn-coral nav-link-inline" data-section="dashboard">
+                    Explore Dashboard
+                  </a>
+                  <a href="#matrix-analysis" class="xylem-btn xylem-btn-outline nav-link-inline" data-section="matrix-analysis">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right Column: 3D Isometric Campus Visual & Telemetry Node -->
+              <div class="xylem-visual-col">
+                <div class="isometric-stage">
+                  <!-- 3D Isometric Campus Image Asset -->
+                  <div class="isometric-image-wrapper">
+                    <img src="smart_campus_isometric.jpg" alt="Smart Campus 3D Isometric Infrastructure" class="isometric-img">
+                  </div>
+
+                  <!-- Curved Pipeline Telemetry Node Line (Matching 32 FT/S in image) -->
+                  <svg class="telemetry-curve-svg" viewBox="0 0 400 300" fill="none">
+                    <path d="M 40,280 C 100,240 120,160 200,180 C 260,195 310,130 350,90" stroke="rgba(255, 255, 255, 0.45)" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+                  </svg>
+
+                  <!-- Telemetry Node with 32 FT/S Callout Badge -->
+                  <div class="telemetry-node">
+                    <span class="node-label">32 FT/S</span>
+                    <div class="node-glow-pip">
+                      <div class="pip-inner"></div>
+                      <div class="pip-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Flowing Wave SVG Curve -->
+            <div class="xylem-wave-wrapper">
+              <svg viewBox="0 0 1440 140" fill="none" preserveAspectRatio="none">
+                <path d="M0,45 C280,110 520,120 740,65 C980,10 1220,70 1440,40 L1440,140 L0,140 Z" fill="#ffffff"></path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Quick Interactive Jump Cards Beneath Hero Wave -->
+          <div class="hero-feature-cards">
+            <div class="feature-card" onclick="document.querySelector('[data-section=dashboard]').click()">
+              <div class="feat-icon icon-blue"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="feat-info">
+                <h4>Dynamic Dashboard</h4>
+                <p>Real-time campus water consumption tracking, metrics, and instant visual telemetry.</p>
+              </div>
+              <span class="feat-arrow">&rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="document.querySelector('[data-section=matrix-analysis]').click()">
+              <div class="feat-icon icon-cyan"><i class="fa-solid fa-table-cells"></i></div>
+              <div class="feat-info">
+                <h4>Matrix Algebra Engine</h4>
+                <p>2D Matrix $A \in \mathbb{R}^{5 \times 4}$, row/column vector sums, and Frobenius entries.</p>
+              </div>
+              <span class="feat-arrow">&rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="document.querySelector('[data-section=calculus-analysis]').click()">
+              <div class="feat-icon icon-teal"><i class="fa-solid fa-calculator"></i></div>
+              <div class="feat-info">
+                <h4>Calculus Rate & Integrals</h4>
+                <p>Finite differences $\frac{\Delta V}{\Delta t}$, secant slopes, and pipeline volume integrals $\int q(t) dt$.</p>
+              </div>
+              <span class="feat-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 1: DASHBOARD                      -->
+      <!-- ========================================== -->
+      <section id="dashboard" class="content-section">
+        <!-- Metric Cards Grid -->
+        <div class="metrics-grid">
+          <div class="metric-card card-blue">
+            <div class="metric-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+            <div class="metric-body">
+              <span class="metric-label">Total Water Consumption</span>
+              <div class="metric-value-row">
+                <span id="metricTotalConsumption" class="metric-value">0</span>
+                <span class="metric-unit">Litres</span>
+              </div>
+              <span class="metric-trend"><i class="fa-solid fa-layer-group"></i> Matrix Grand Sum (T)</span>
+            </div>
+          </div>
+
+          <div class="metric-card card-cyan">
+            <div class="metric-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="metric-body">
+              <span class="metric-label">Highest Consuming Location</span>
+              <div class="metric-value-row">
+                <span id="metricHighestLocation" class="metric-value">--</span>
+              </div>
+              <span id="metricHighestLocationVal" class="metric-subtext">0 L recorded</span>
+            </div>
+          </div>
+
+          <div class="metric-card card-indigo">
+            <div class="metric-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="metric-body">
+              <span class="metric-label">Peak Consumption Slot</span>
+              <div class="metric-value-row">
+                <span id="metricPeakSlot" class="metric-value">--</span>
+              </div>
+              <span id="metricPeakSlotVal" class="metric-subtext">0 L recorded</span>
+            </div>
+          </div>
+
+          <div class="metric-card card-teal">
+            <div class="metric-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <div class="metric-body">
+              <span class="metric-label">Average per Location</span>
+              <div class="metric-value-row">
+                <span id="metricAvgConsumption" class="metric-value">0</span>
+                <span class="metric-unit">L/loc</span>
+              </div>
+              <span class="metric-subtext">Mean of Row Vectors</span>
+            </div>
+          </div>
+
+          <div class="metric-card card-slate">
+            <div class="metric-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="metric-body">
+              <span class="metric-label">Recorded Measurements</span>
+              <div class="metric-value-row">
+                <span id="metricRecordCount" class="metric-value">0</span>
+                <span class="metric-unit">Logs</span>
+              </div>
+              <span id="metricMethodBreakdown" class="metric-subtext">0 direct / 0 estimated</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Charts Row -->
+        <div class="dashboard-charts-grid">
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-bar"></i> Location-Wise Water Consumption</h3>
+                <p>Total volume consumed across designated campus zones</p>
+              </div>
+              <span class="pill-badge pill-blue">Row Sums (Rᵢ)</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="dashboardLocationChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-line"></i> Time-Slot Distribution Trend</h3>
+                <p>Aggregate flow progression across campus operational hours</p>
+              </div>
+              <span class="pill-badge pill-cyan">Column Sums (Cⱼ)</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="dashboardTimeChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Records & Conservation Highlights Row -->
+        <div class="dashboard-bottom-grid">
+          <!-- Recent Records Mini Table -->
+          <div class="panel-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Recent Campus Measurements</h3>
+                <p>Latest entered water telemetry records</p>
+              </div>
+              <a href="#data-entry" class="view-all-link nav-link-inline" data-section="data-entry">View All</a>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Time Slot</th>
+                    <th>Volume (L)</th>
+                    <th>Method</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardRecentRecords">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Conservation Insights -->
+          <div class="panel-card insights-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-leaf"></i> Mathematical Conservation Insights</h3>
+                <p>Calculated heuristics & smart water guidance</p>
+              </div>
+              <a href="#recommendations" class="view-all-link nav-link-inline" data-section="recommendations">Details</a>
+            </div>
+            <div id="dashboardInsightsList" class="insights-summary-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 2: DATA ENTRY MODULE              -->
+      <!-- ========================================== -->
+      <section id="data-entry" class="content-section">
+        <!-- Form & Controls Grid -->
+        <div class="data-entry-layout">
+          <!-- Form Card -->
+          <div class="form-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 id="formTitle"><i class="fa-solid fa-pen-to-square"></i> Record Water Consumption</h3>
+                <p>Add verified campus water readings or flow rate estimates</p>
+              </div>
+              <button id="cancelEditBtn" class="btn btn-secondary-sm d-none">Cancel Edit</button>
+            </div>
+
+            <form id="waterDataForm" autocomplete="off">
+              <input type="hidden" id="editRecordId" value="">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="entryDate"><i class="fa-regular fa-calendar"></i> Date <span class="required">*</span></label>
+                  <input type="date" id="entryDate" required>
+                </div>
+                <div class="form-group">
+                  <label for="entryLocation"><i class="fa-solid fa-building"></i> Campus Location <span class="required">*</span></label>
+                  <select id="entryLocation" required>
+                    <option value="" disabled selected>Select location...</option>
+                    <option value="Washroom">Washroom</option>
+                    <option value="Canteen">Canteen</option>
+                    <option value="Garden">Garden</option>
+                    <option value="Laboratory">Laboratory</option>
+                    <option value="Drinking Water Facility">Drinking Water Facility</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="entryTimeSlot"><i class="fa-regular fa-clock"></i> Time Slot <span class="required">*</span></label>
+                  <select id="entryTimeSlot" required>
+                    <option value="" disabled selected>Select slot...</option>
+                    <option value="9 AM – 11 AM">9 AM – 11 AM</option>
+                    <option value="11 AM – 1 PM">11 AM – 1 PM</option>
+                    <option value="1 PM – 3 PM">1 PM – 3 PM</option>
+                    <option value="3 PM – 5 PM">3 PM – 5 PM</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="entryVolume"><i class="fa-solid fa-flask-vial"></i> Water Volume (Litres) <span class="required">*</span></label>
+                  <input type="number" id="entryVolume" min="0.1" step="0.1" placeholder="e.g. 120" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="entryMethod"><i class="fa-solid fa-gauge-high"></i> Measurement Method <span class="required">*</span></label>
+                <div class="radio-toggle-group">
+                  <label class="radio-label">
+                    <input type="radio" name="entryMethod" value="Direct Measurement" checked>
+                    <span class="radio-custom"></span>
+                    <span class="radio-text">
+                      <strong>Direct Measurement</strong>
+                      <small>Water meter / flow sensor reading</small>
+                    </span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="entryMethod" value="Flow Rate Estimate">
+                    <span class="radio-custom"></span>
+                    <span class="radio-text">
+                      <strong>Flow Rate Estimate</strong>
+                      <small>Computed via tap flow rate × duration</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="saveRecordBtn" class="btn btn-primary">
+                  <i class="fa-solid fa-plus"></i> <span id="saveBtnText">Save Record</span>
+                </button>
+                <button type="reset" id="resetFormBtn" class="btn btn-secondary">
+                  <i class="fa-solid fa-eraser"></i> Clear Form
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Quick Data Tools Card -->
+          <div class="tools-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-sliders"></i> Dataset Tools</h3>
+                <p>Manage, export, and benchmark records</p>
+              </div>
+            </div>
+            <div class="tools-list">
+              <div class="tool-item">
+                <div class="tool-info">
+                  <strong>Export Records</strong>
+                  <span>Download active dataset as CSV format</span>
+                </div>
+                <button id="exportCsvBtn" class="btn btn-outline">
+                  <i class="fa-solid fa-file-csv"></i> Export CSV
+                </button>
+              </div>
+              <div class="tool-item">
+                <div class="tool-info">
+                  <strong>Restore Illustrative Sample</strong>
+                  <span>Revert to benchmark sample matrix</span>
+                </div>
+                <button id="restoreSampleBtn" class="btn btn-outline">
+                  <i class="fa-solid fa-rotate-left"></i> Restore Sample
+                </button>
+              </div>
+              <div class="tool-item danger-tool">
+                <div class="tool-info">
+                  <strong>Reset All Data</strong>
+                  <span>Clear all records from browser storage</span>
+                </div>
+                <button id="clearAllBtn" class="btn btn-danger-outline">
+                  <i class="fa-solid fa-trash-can"></i> Clear All
+                </button>
+              </div>
+            </div>
+            <div class="storage-notice">
+              <i class="fa-solid fa-hard-drive"></i>
+              <span>Data is stored locally in your browser's LocalStorage. No server required.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar + Records Table -->
+        <div class="table-card">
+          <div class="table-header-bar">
+            <div class="table-title">
+              <h3><i class="fa-solid fa-database"></i> Recorded Water Consumption Logs</h3>
+              <span id="tableRecordCountBadge" class="count-badge">0 records</span>
+            </div>
+            <div class="table-filters">
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="recordSearchInput" placeholder="Search location, time, method...">
+              </div>
+              <select id="filterLocationSelect" class="filter-select">
+                <option value="all">All Locations</option>
+                <option value="Washroom">Washroom</option>
+                <option value="Canteen">Canteen</option>
+                <option value="Garden">Garden</option>
+                <option value="Laboratory">Laboratory</option>
+                <option value="Drinking Water Facility">Drinking Water</option>
+              </select>
+              <select id="filterMethodSelect" class="filter-select">
+                <option value="all">All Methods</option>
+                <option value="Direct Measurement">Direct Only</option>
+                <option value="Flow Rate Estimate">Estimates Only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="fullRecordsTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Location</th>
+                  <th>Time Slot</th>
+                  <th>Volume (Litres)</th>
+                  <th>Measurement Method</th>
+                  <th>Type</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="recordsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+          <div id="noRecordsState" class="empty-state d-none">
+            <i class="fa-solid fa-folder-open empty-icon"></i>
+            <h4>No consumption records found</h4>
+            <p>Try modifying your search filters or click "Restore Sample" to load default data.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 3: MATRIX ALGEBRA ANALYSIS       -->
+      <!-- ========================================== -->
+      <section id="matrix-analysis" class="content-section">
+        <!-- Section Intro Card -->
+        <div class="math-hero-card">
+          <div class="math-hero-text">
+            <span class="math-tag"><i class="fa-solid fa-square-root-variable"></i> Core Mathematical Modeling</span>
+            <h2>Matrix Algebra Water Consumption Representation</h2>
+            <p>
+              In campus resource modeling, multi-variable telemetry is arranged into an $m \times n$ matrix $A \in \mathbb{R}^{m \times n}$.
+              Rows represent distinct <strong>campus geographic locations</strong> ($i = 1, \dots, m$), and columns represent discrete <strong>operational time intervals</strong> ($j = 1, \dots, n$).
+              Each element $a_{ij}$ denotes the water volume consumed (in litres) at location $i$ during time slot $j$.
+            </p>
+          </div>
+          <div class="matrix-filter-bar">
+            <label for="matrixDateFilter"><i class="fa-regular fa-calendar-check"></i> Filter by Date:</label>
+            <select id="matrixDateFilter">
+              <option value="all">Aggregate (Sum across all dates)</option>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Matrix Mathematical Display Card -->
+        <div class="matrix-display-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h3><i class="fa-solid fa-table-cells-large"></i> Campus Consumption Matrix $A$</h3>
+              <p>Values $a_{ij}$ in Litres with row totals, column totals, and extremum indicators</p>
+            </div>
+            <div class="matrix-legend">
+              <span class="legend-chip chip-max"><span class="chip-dot"></span> Maximum Element ($\max a_{ij}$)</span>
+              <span class="legend-chip chip-min"><span class="chip-dot"></span> Minimum Element ($\min a_{ij}$)</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Matrix Grid Container -->
+          <div class="matrix-wrapper">
+            <div class="matrix-bracket-left"></div>
+            <div class="matrix-table-scroll">
+              <table class="math-matrix-table" id="matrixVisualTable">
+                <!-- Dynamically Generated Matrix -->
+              </table>
+            </div>
+            <div class="matrix-bracket-right"></div>
+          </div>
+
+          <!-- Matrix Dimension and Extremum Summary Bar -->
+          <div class="matrix-stats-bar">
+            <div class="stat-pill">
+              <span class="stat-title">Matrix Dimensions:</span>
+              <span id="matrixDimBadge" class="stat-content">5 × 4 ($m \times n$)</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-title">Maximum Consumption ($a_{max}$):</span>
+              <span id="matrixMaxBadge" class="stat-content text-amber">0 L</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-title">Minimum Consumption ($a_{min}$):</span>
+              <span id="matrixMinBadge" class="stat-content text-cyan">0 L</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-title">Total Campus Volume ($T$):</span>
+              <span id="matrixTotalBadge" class="stat-content text-primary">0 L</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mathematical Operations & Rigorous Formulas -->
+        <div class="math-formula-grid">
+          <!-- Row Total Calculation -->
+          <div class="math-card">
+            <div class="math-card-header">
+              <div class="math-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+              <div>
+                <h4>Row Totals (Location Aggregation)</h4>
+                <span>Sum of consumption per campus facility</span>
+              </div>
+            </div>
+            <div class="formula-box">
+              <code>R_i = \sum_{j=1}^{n} a_{ij} \quad \text{for each location } i</code>
+            </div>
+            <p class="math-desc">
+              Vector product formulation: $R = A \cdot \mathbf{1}_n$, where $\mathbf{1}_n$ is an $n \times 1$ column vector of ones. Each entry $R_i$ reveals the cumulative daily footprint of a specific department.
+            </p>
+            <div class="computed-results-box" id="rowTotalsOutput">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Column Total Calculation -->
+          <div class="math-card">
+            <div class="math-card-header">
+              <div class="math-icon"><i class="fa-solid fa-arrows-up-down"></i></div>
+              <div>
+                <h4>Column Totals (Time Slot Aggregation)</h4>
+                <span>Sum of consumption per temporal window</span>
+              </div>
+            </div>
+            <div class="formula-box">
+              <code>C_j = \sum_{i=1}^{m} a_{ij} \quad \text{for each time slot } j</code>
+            </div>
+            <p class="math-desc">
+              Vector product formulation: $C^T = \mathbf{1}_m^T \cdot A$, where $\mathbf{1}_m$ is an $m \times 1$ column vector of ones. This isolates campus-wide temporal surges across the daily cycle.
+            </p>
+            <div class="computed-results-box" id="colTotalsOutput">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Grand Total Calculation -->
+          <div class="math-card">
+            <div class="math-card-header">
+              <div class="math-icon"><i class="fa-solid fa-calculator"></i></div>
+              <div>
+                <h4>Total Campus Consumption</h4>
+                <span>Matrix Frobenius Entrywise Sum</span>
+              </div>
+            </div>
+            <div class="formula-box">
+              <code>T = \sum_{i=1}^{m} \sum_{j=1}^{n} a_{ij} = \mathbf{1}_m^T \cdot A \cdot \mathbf{1}_n</code>
+            </div>
+            <p class="math-desc">
+              The overall scalar sum equal to $\sum R_i = \sum C_j$. Represents the total volume demanded by the campus over the analyzed timeframe.
+            </p>
+            <div class="computed-results-box" id="grandTotalOutput">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Averages Breakdown -->
+          <div class="math-card">
+            <div class="math-card-header">
+              <div class="math-icon"><i class="fa-solid fa-divide"></i></div>
+              <div>
+                <h4>Arithmetic Means</h4>
+                <span>Average per location and time interval</span>
+              </div>
+            </div>
+            <div class="formula-box">
+              <code>\bar{R}_i = \frac{R_i}{n}, \qquad \bar{C}_j = \frac{C_j}{m}</code>
+            </div>
+            <p class="math-desc">
+              Normalized baseline metric evaluating whether a facility or temporal window exceeds typical central tendency.
+            </p>
+            <div class="computed-results-box" id="averagesOutput">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 4: CALCULUS ANALYSIS              -->
+      <!-- ========================================== -->
+      <section id="calculus-analysis" class="content-section">
+        <!-- Section Intro Banner -->
+        <div class="math-hero-card calculus-hero">
+          <div class="math-hero-text">
+            <span class="math-tag"><i class="fa-solid fa-infinity"></i> Continuous & Discrete Calculus</span>
+            <h2>Calculus Analysis: Rates of Change & Cumulative Integration</h2>
+            <p>
+              Calculus allows us to transition from static volume measurements to dynamic flow rates ($q(t) = \frac{dV}{dt}$) and cumulative volumetric integration ($V = \int q(t) dt$).
+              In digital smart-campus networks where readings are recorded at discrete time nodes, we deploy <strong>finite difference approximations</strong> for derivatives and <strong>definite integrals</strong> for continuous pipeline models.
+            </p>
+          </div>
+        </div>
+
+        <!-- Academic Rigor Notice -->
+        <div class="notice-box">
+          <div class="notice-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="notice-text">
+            <strong>Theoretical Engineering Clarification:</strong> Discrete campus time logs provide numerical approximations of instantaneous rates (finite difference quotients $\frac{\Delta V}{\Delta t}$) rather than exact analytical derivatives $\frac{dV}{dt}$, and Riemann sums rather than exact integrals, unless continuous analytical flow models $q(t)$ are formally assumed.
+          </div>
+        </div>
+
+        <!-- Calculus Modules Grid -->
+        <div class="calculus-grid">
+
+          <!-- MODULE A: Average Rate of Change -->
+          <div class="calc-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-line"></i> Module A: Average Rate of Change</h3>
+                <p>Secant line slope between discrete campus temporal states</p>
+              </div>
+              <span class="pill-badge pill-blue">Slope of Secant</span>
+            </div>
+
+            <div class="formula-banner">
+              <code>\text{Average Rate of Change} = \frac{\Delta V}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1} \quad \left[\frac{\text{Litres}}{\text{Hour}}\right]</code>
+            </div>
+
+            <!-- Interactive Rate Calculator Controls -->
+            <div class="calc-controls">
+              <div class="calc-control-group">
+                <label for="rateLocationSelect">Target Facility:</label>
+                <select id="rateLocationSelect" class="form-input">
+                  <option value="Washroom">Washroom</option>
+                  <option value="Canteen">Canteen</option>
+                  <option value="Garden">Garden</option>
+                  <option value="Laboratory">Laboratory</option>
+                  <option value="Drinking Water Facility">Drinking Water Facility</option>
+                </select>
+              </div>
+              <div class="calc-control-group">
+                <label for="rateSlot1Select">Initial Interval ($t_1$):</label>
+                <select id="rateSlot1Select" class="form-input">
+                  <option value="9 AM – 11 AM">9 AM – 11 AM (t = 10:00)</option>
+                  <option value="11 AM – 1 PM">11 AM – 1 PM (t = 12:00)</option>
+                  <option value="1 PM – 3 PM">1 PM – 3 PM (t = 14:00)</option>
+                  <option value="3 PM – 5 PM">3 PM – 5 PM (t = 16:00)</option>
+                </select>
+              </div>
+              <div class="calc-control-group">
+                <label for="rateSlot2Select">Final Interval ($t_2$):</label>
+                <select id="rateSlot2Select" class="form-input">
+                  <option value="9 AM – 11 AM">9 AM – 11 AM (t = 10:00)</option>
+                  <option value="11 AM – 1 PM" selected>11 AM – 1 PM (t = 12:00)</option>
+                  <option value="1 PM – 3 PM">1 PM – 3 PM (t = 14:00)</option>
+                  <option value="3 PM – 5 PM">3 PM – 5 PM (t = 16:00)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Calculation Output Cards -->
+            <div class="calc-step-results" id="averageRateResultBox">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- MODULE B: Finite Difference Analysis -->
+          <div class="calc-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-wave-square"></i> Module B: Finite Difference Analysis</h3>
+                <p>Numerical approximation of the derivative $\frac{dV}{dt}$ across consecutive measurements</p>
+              </div>
+              <span class="pill-badge pill-cyan">Derivative Approx</span>
+            </div>
+
+            <div class="formula-banner">
+              <code>q_k \approx \frac{V_{k+1} - V_k}{\Delta t_k} \quad (\text{Forward Difference})</code>
+            </div>
+
+            <p class="calc-explanation">
+              For consecutive two-hour time slots ($\Delta t = 2 \text{ hours}$), the estimated rate of consumption change quantifies whether demand is accelerating ($q' > 0$) or decelerating ($q' < 0$).
+            </p>
+
+            <div class="calc-controls">
+              <div class="calc-control-group">
+                <label for="finiteDiffLocation">Select Location for Finite Difference:</label>
+                <select id="finiteDiffLocation" class="form-input">
+                  <option value="Washroom">Washroom</option>
+                  <option value="Canteen">Canteen</option>
+                  <option value="Garden">Garden</option>
+                  <option value="Laboratory">Laboratory</option>
+                  <option value="Drinking Water Facility">Drinking Water Facility</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="finiteDiffTable">
+                <thead>
+                  <tr>
+                    <th>Time Slot</th>
+                    <th>Volume $V$ (L)</th>
+                    <th>$\Delta t$ (Hours)</th>
+                    <th>$\Delta V$ (L)</th>
+                    <th>Estimated Rate of Change</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="finiteDiffBody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- MODULE C: Integration & Cumulative Water Usage -->
+          <div class="calc-card full-width">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-square-root-variable"></i> Module C: Continuous Integration & Cumulative Volume</h3>
+                <p>Fundamental Theorem of Calculus applied to campus hydraulic flow rates</p>
+              </div>
+              <span class="pill-badge pill-teal">Definite Integral</span>
+            </div>
+
+            <div class="formula-banner">
+              <code>V = \int_{a}^{b} q(t) \, dt</code>
+            </div>
+
+            <div class="integration-layout">
+              <!-- Left: Interactive Flow Integrator -->
+              <div class="integration-inputs-panel">
+                <h4><i class="fa-solid fa-sliders"></i> Continuous Flow Integrator</h4>
+                <p>Simulate campus taps, main supply lines, or irrigation valves running over duration $T$:</p>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="integralFlowRate">Flow Rate $q$ (Litres / minute):</label>
+                    <input type="number" id="integralFlowRate" value="6" min="0.1" step="0.5">
+                    <small>Default project benchmark: 6 L/min tap flow</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="integralDuration">Duration $T$ (Minutes):</label>
+                    <input type="number" id="integralDuration" value="15" min="1" step="1">
+                    <small>Default project benchmark: 15 minutes</small>
+                  </div>
+                </div>
+
+                <div class="flow-model-selector">
+                  <label>Flow Rate Profile Model $q(t)$:</label>
+                  <div class="radio-pill-group">
+                    <label class="radio-pill">
+                      <input type="radio" name="flowProfile" value="constant" checked>
+                      <span>Constant Flow ($q(t) = k$)</span>
+                    </label>
+                    <label class="radio-pill">
+                      <input type="radio" name="flowProfile" value="linear">
+                      <span>Linear Surge ($q(t) = k \cdot \frac{t}{T}$)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="integration-solution-box" id="integrationSolutionDisplay">
+                  <!-- Populated dynamically with step-by-step math -->
+                </div>
+              </div>
+
+              <!-- Right: Mathematical Derivation & Concept Visualizer -->
+              <div class="integration-concept-panel">
+                <h4><i class="fa-solid fa-book-open"></i> Mathematical Proof & Derivation</h4>
+                <div class="derivation-step">
+                  <span class="step-num">Step 1</span>
+                  <div class="step-content">
+                    <strong>Define the Rate Function:</strong>
+                    <p>Let $q(t)$ denote instantaneous volumetric flow rate $\left[\frac{\text{L}}{\text{min}}\right]$. For constant flow $q(t) = 6 \text{ L/min}$ over $t \in [0, 15]$:</p>
+                    <code>V = \int_{0}^{15} 6 \, dt</code>
+                  </div>
+                </div>
+                <div class="derivation-step">
+                  <span class="step-num">Step 2</span>
+                  <div class="step-content">
+                    <strong>Antiderivative Evaluation:</strong>
+                    <p>By the Fundamental Theorem of Calculus, $\int k \, dt = k t + C$. Evaluating bounds:</p>
+                    <code>V = [6t]_{0}^{15} = 6(15) - 6(0) = 90 \text{ Litres}</code>
+                  </div>
+                </div>
+                <div class="derivation-step">
+                  <span class="step-num">Step 3</span>
+                  <div class="step-content">
+                    <strong>Riemann Sum Connection:</strong>
+                    <p>In discrete campus data, cumulative volume is approximated by the Riemann sum: $V \approx \sum_{k=1}^{n} q(t_k^*) \Delta t_k$. As $\Delta t_k \to 0$, the sum converges to the definite integral.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 5: GRAPHS & VISUALIZATION         -->
+      <!-- ========================================== -->
+      <section id="visualizations" class="content-section">
+        <!-- Visualization Filter Bar -->
+        <div class="viz-filter-card">
+          <div class="viz-filter-title">
+            <i class="fa-solid fa-filter"></i>
+            <span>Interactive Chart Filters</span>
+          </div>
+          <div class="viz-filter-controls">
+            <div class="viz-filter-group">
+              <label for="vizDateFilter">Date Filter:</label>
+              <select id="vizDateFilter" class="form-input-sm">
+                <option value="all">All Dates Combined</option>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="viz-filter-group">
+              <label for="vizLocationFilter">Campus Location:</label>
+              <select id="vizLocationFilter" class="form-input-sm">
+                <option value="all">All Locations</option>
+                <option value="Washroom">Washroom</option>
+                <option value="Canteen">Canteen</option>
+                <option value="Garden">Garden</option>
+                <option value="Laboratory">Laboratory</option>
+                <option value="Drinking Water Facility">Drinking Water Facility</option>
+              </select>
+            </div>
+            <div class="viz-filter-group">
+              <label for="vizTimeSlotFilter">Time Slot:</label>
+              <select id="vizTimeSlotFilter" class="form-input-sm">
+                <option value="all">All Time Slots</option>
+                <option value="9 AM – 11 AM">9 AM – 11 AM</option>
+                <option value="11 AM – 1 PM">11 AM – 1 PM</option>
+                <option value="1 PM – 3 PM">1 PM – 3 PM</option>
+                <option value="3 PM – 5 PM">3 PM – 5 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Grid Charts -->
+        <div class="visualizations-grid">
+          <!-- Chart 1: Bar Chart (Location) -->
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-column"></i> Total Consumption by Location</h3>
+                <p>Comparative bar visualization of facility demand</p>
+              </div>
+              <span class="pill-badge pill-blue">Bar Chart</span>
+            </div>
+            <div class="chart-container-large">
+              <canvas id="vizLocationBarChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Line Chart (Time Series) -->
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-line"></i> Water Consumption Over Time</h3>
+                <p>Diurnal consumption profile across academic hours</p>
+              </div>
+              <span class="pill-badge pill-cyan">Line Chart</span>
+            </div>
+            <div class="chart-container-large">
+              <canvas id="vizTimeLineChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 3: Doughnut Chart (Percentage Share) -->
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-chart-pie"></i> Percentage Consumption Share</h3>
+                <p>Proportional distribution of campus water budget</p>
+              </div>
+              <span class="pill-badge pill-indigo">Doughnut Chart</span>
+            </div>
+            <div class="chart-container-large">
+              <canvas id="vizShareDoughnutChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 4: Calculus Rate Line Chart -->
+          <div class="chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3><i class="fa-solid fa-bolt"></i> Estimated Consumption Rate ($\Delta V / \Delta t$)</h3>
+                <p>Calculus finite difference rate of change curve (Litres / Hour)</p>
+              </div>
+              <span class="pill-badge pill-teal">Calculus Rate</span>
+            </div>
+            <div class="chart-container-large">
+              <canvas id="vizRateLineChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 6: RESULTS & RECOMMENDATIONS       -->
+      <!-- ========================================== -->
+      <section id="recommendations" class="content-section">
+        <!-- Intelligent Analysis Banner -->
+        <div class="math-hero-card insights-hero">
+          <div class="math-hero-text">
+            <span class="math-tag"><i class="fa-solid fa-microchip"></i> Automated Decision Support</span>
+            <h2>Mathematical Diagnostics & Campus Conservation Protocol</h2>
+            <p>
+              By evaluating matrix row vectors, column vectors, and calculus finite difference acceleration, AquaMatrix automatically generates empirical diagnostics to guide administrative water audits.
+            </p>
+          </div>
+        </div>
+
+        <!-- Academic Rigor Water Savings Disclaimer -->
+        <div class="notice-box notice-warning">
+          <div class="notice-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="notice-text">
+            <strong>Important Scientific Principle:</strong> Water conservation strategies below represent targeted empirical hypotheses. In engineering audits, <em>actual water savings cannot be claimed</em> until rigorous before-and-after baseline measurements are logged and mathematically verified.
+          </div>
+        </div>
+
+        <!-- Dynamic Insights Grid -->
+        <div class="insights-dashboard-grid">
+          <!-- Location Diagnostic -->
+          <div class="insight-metric-card">
+            <div class="insight-metric-header">
+              <i class="fa-solid fa-triangle-exclamation text-amber"></i>
+              <h4>Primary Resource Consumer</h4>
+            </div>
+            <div class="insight-highlight" id="insightTopLocation">--</div>
+            <p id="insightTopLocationDesc">Calculated from row vector maximum $\max_i R_i$.</p>
+            <div class="recommendation-pill">Target for Priority Audit</div>
+          </div>
+
+          <!-- Time Slot Diagnostic -->
+          <div class="insight-metric-card">
+            <div class="insight-metric-header">
+              <i class="fa-solid fa-fire text-red"></i>
+              <h4>Peak Demand Time Window</h4>
+            </div>
+            <div class="insight-highlight" id="insightPeakSlot">--</div>
+            <p id="insightPeakSlotDesc">Calculated from column vector maximum $\max_j C_j$.</p>
+            <div class="recommendation-pill">Campus Pressure Spike Window</div>
+          </div>
+
+          <!-- Most Efficient Zone -->
+          <div class="insight-metric-card">
+            <div class="insight-metric-header">
+              <i class="fa-solid fa-circle-check text-green"></i>
+              <h4>Lowest Consuming Facility</h4>
+            </div>
+            <div class="insight-highlight" id="insightMinLocation">--</div>
+            <p id="insightMinLocationDesc">Calculated from row vector minimum $\min_i R_i$.</p>
+            <div class="recommendation-pill">Baseline Operational Control</div>
+          </div>
+
+          <!-- Diurnal Trend Diagnostic -->
+          <div class="insight-metric-card">
+            <div class="insight-metric-header">
+              <i class="fa-solid fa-arrow-trend-up text-cyan"></i>
+              <h4>Diurnal Trend Gradient</h4>
+            </div>
+            <div class="insight-highlight" id="insightTrendState">--</div>
+            <p id="insightTrendDesc">Calculated via finite difference sign between morning and afternoon slots.</p>
+            <div class="recommendation-pill">Temporal Flow Pattern</div>
+          </div>
+        </div>
+
+        <!-- Actionable Recommendations Matrix -->
+        <div class="recommendations-container">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h3><i class="fa-solid fa-clipboard-check"></i> Mathematical Action Plan & Conservation Recommendations</h3>
+              <p>Formulated dynamically from the current campus matrix dataset</p>
+            </div>
+          </div>
+
+          <div class="recommendations-list" id="actionableRecommendationsList">
+            <!-- Dynamically generated based on data -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 7: ABOUT AQUAMATRIX               -->
+      <!-- ========================================== -->
+      <section id="about" class="content-section">
+        <div class="about-hero-card">
+          <div class="about-brand">
+            <div class="about-logo"><i class="fa-solid fa-water"></i></div>
+            <div>
+              <h2>AquaMatrix</h2>
+              <p class="about-subtitle">Smart Campus Water Consumption Analysis and Optimization Using Matrix Algebra and Calculus</p>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">B.Tech First Year Project</span>
+            <span class="tag">Engineering Mathematics</span>
+            <span class="tag">Applied Linear Algebra</span>
+            <span class="tag">Differential & Integral Calculus</span>
+          </div>
+        </div>
+
+        <div class="about-details-grid">
+          <!-- Project Metadata Card -->
+          <div class="about-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-file-contract"></i> Project Specifications</h3>
+            </div>
+            <ul class="spec-list">
+              <li>
+                <strong>Project Title:</strong>
+                <span>AquaMatrix – Smart Campus Water Consumption Analysis and Optimization Using Matrix Algebra and Calculus</span>
+              </li>
+              <li>
+                <strong>Project Type:</strong>
+                <span>Website-Based Digital Mathematical Model</span>
+              </li>
+              <li>
+                <strong>Mathematics Used:</strong>
+                <span>Matrix Algebra (Vectors, 2D Arrays, Linear Combinations, Row/Column Sums) & Calculus (Secant Rates, Finite Difference Approximations, Definite Integration)</span>
+              </li>
+              <li>
+                <strong>Technology Stack:</strong>
+                <span>HTML5, CSS3 (Modern Responsive Dashboard), Vanilla JavaScript (ES6+), Chart.js (Interactive Visualizations)</span>
+              </li>
+              <li>
+                <strong>Architectural Paradigm:</strong>
+                <span>Pure client-side single page architecture with browser LocalStorage persistence (Zero backend, zero third-party telemetry, 100% offline executable)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project Objective Card -->
+          <div class="about-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-bullseye"></i> Project Objective</h3>
+            </div>
+            <p class="about-text">
+              The primary objective of <strong>AquaMatrix</strong> is to demonstrate how fundamental mathematical models taught in first-year engineering can organize, analyze, and interpret campus water consumption data to support informed, data-driven water conservation decisions.
+            </p>
+            <div class="objective-points">
+              <div class="obj-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <div>
+                  <strong>Structure Multi-Variable Campus Data:</strong>
+                  <span>Transform disparate physical water logs into rigorous mathematical matrix representations $A \in \mathbb{R}^{m \times n}$.</span>
+                </div>
+              </div>
+              <div class="obj-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <div>
+                  <strong>Quantify Rates of Change:</strong>
+                  <span>Apply calculus principles (secant lines and finite differences) to detect surge periods and anomalous spikes.</span>
+                </div>
+              </div>
+              <div class="obj-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <div>
+                  <strong>Integrate Cumulative Flow:</strong>
+                  <span>Model physical pipelines via continuous rate integration $\int q(t) dt$ to bridge theoretical calculus with environmental engineering.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Mathematical Formulation Guide -->
+        <div class="math-guide-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-graduation-cap"></i> First-Year B.Tech Mathematics Formulation Summary</h3>
+          </div>
+          <div class="math-guide-table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Concept</th>
+                  <th>Mathematical Expression</th>
+                  <th>Physical Interpretation in Smart Campus</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Matrix Element</strong></td>
+                  <td><code>a_{ij}</code></td>
+                  <td>Litres consumed at location index $i$ during time interval index $j$.</td>
+                </tr>
+                <tr>
+                  <td><strong>Row Vector Total</strong></td>
+                  <td><code>R_i = \sum_{j=1}^{n} a_{ij} = (A \cdot \mathbf{1}_n)_i</code></td>
+                  <td>Total water demanded by facility $i$ across all time slots.</td>
+                </tr>
+                <tr>
+                  <td><strong>Column Vector Total</strong></td>
+                  <td><code>C_j = \sum_{i=1}^{m} a_{ij} = (\mathbf{1}_m^T \cdot A)_j</code></td>
+                  <td>Campus-wide water demand during temporal window $j$.</td>
+                </tr>
+                <tr>
+                  <td><strong>Grand Total</strong></td>
+                  <td><code>T = \sum_{i} \sum_{j} a_{ij} = \mathbf{1}_m^T A \mathbf{1}_n</code></td>
+                  <td>Total campus water volume consumed.</td>
+                </tr>
+                <tr>
+                  <td><strong>Average Rate of Change</strong></td>
+                  <td><code>\frac{\Delta V}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1}</code></td>
+                  <td>Slope of the secant line representing average volumetric flow in Litres/hour.</td>
+                </tr>
+                <tr>
+                  <td><strong>Finite Difference Quotient</strong></td>
+                  <td><code>q_k \approx \frac{V_{k+1} - V_k}{\Delta t_k}</code></td>
+                  <td>Numerical discrete approximation of the instantaneous derivative $\frac{dV}{dt}$.</td>
+                </tr>
+                <tr>
+                  <td><strong>Definite Integral</strong></td>
+                  <td><code>V = \int_{a}^{b} q(t) \, dt</code></td>
+                  <td>Total volume accumulated from continuous flow rate $q(t)$ over time interval $[a, b]$.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Confirmation Modal for Clear All / Reset -->
+  <div id="confirmModal" class="modal-backdrop d-none">
+    <div class="modal-box">
+      <div class="modal-icon text-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h3 id="modalTitle">Clear All Campus Records?</h3>
+      <p id="modalDesc">This will delete all entered water telemetry records from your browser's LocalStorage. This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="modalConfirmBtn" class="btn btn-danger">Confirm Delete</button>
+        <button id="modalCancelBtn" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="toast d-none">
+    <i id="toastIcon" class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Operation successful!</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
